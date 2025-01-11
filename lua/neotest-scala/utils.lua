@@ -47,7 +47,7 @@ function M.build_command_with_test_path(project, runner, test_path, extra_args)
         return vim.tbl_flatten({ "sbt", extra_args, project .. "/test" })
     end
 
-    return vim.tbl_flatten({ "sbt", extra_args, project .. "/testOnly -- " .. '"' .. test_path .. '"' })
+    return vim.tbl_flatten({ "sbt", extra_args, project .. "/testOnly " .. test_path })
 end
 
 --- Strip ANSI characters from the string, leaving the rest of the string intact.
