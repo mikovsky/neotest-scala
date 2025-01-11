@@ -2,6 +2,15 @@
 
 [Neotest](https://github.com/rcarriga/neotest) adapter for scala.
 
+
+
+## Important!
+This is a fork of [olisikh/neotest-scala-backup](https://github.com/olisikh/neotest-scala-backup) repository, which itself is a fork of [stevanmilic/neotest-scala](https://github.com/stevanmilic/neotest-scala).
+The [stevanmilic/neotest-scala](https://github.com/stevanmilic/neotest-scala) project appears to be no longer maintained by its owner, so the package of improvements introduced by olisikh is only available in his fork since the pull request submitted by olisikh didn't generate interest from the original adapter's author.
+My fork introduces several fixes for running tests in MUnit. I treat this repository as my private tool, which I will update only when needed, though anyone is free to use the plugin.
+
+Additionally, I'm not 100% sure whether my changes align with the neotest framework philosophy, or whether they break any corner cases regarding MUnit. However, I know that running tests using the original neotest-scala adapter in my case either didn't work at all, returned 0 tests, or ran tests that shouldn't have been run.
+
 Supports the following Scala testing libraries:
 
 - [utest](https://github.com/com-lihaoyi/utest)
@@ -115,4 +124,3 @@ To be implemented:
 - [x] Detect test library
 - [x] Detect build tool that is being used
 - [ ] Display errors in diagnostics (only specs2 is supported for now)
-- [ ] Don't block neovim when trying to figure out the project name for building test commands
