@@ -13,7 +13,8 @@ local function build_test_path(tree, name)
     if parent_tree and parent_tree:data().type == "namespace" then
         local package = utils.get_package_name(parent_tree:data().path)
         local parent_name = parent_tree:data().name
-        return package .. parent_name .. "." .. name
+        local target = (package and package or "*") .. parent_name
+        return target .. " -- " .. '"' .. target .. "." .. name .. '"'
     end
     if parent_tree and parent_tree:data().type == "test" then
         local parent_pos = parent_tree:data()
