@@ -21,10 +21,7 @@ local function build_test_path(tree, name)
     end
     if type == "namespace" then
         local package = utils.get_package_name(tree:data().path)
-        if not package then
-            return nil
-        end
-        return package .. name .. ".*"
+        return (package and package or "*") .. name
     end
     if type == "file" then
         local test_suites = {}
