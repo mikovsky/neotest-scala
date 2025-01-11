@@ -28,14 +28,19 @@ local function build_test_path(tree, name)
     end
     if type == "file" then
         local test_suites = {}
+        local package = utils.get_package_name(tree:data().path)
         for _, child in tree:iter_nodes() do
             if child:data().type == "namespace" then
-                table.insert(test_suites, child:data().name)
+                local test_suite_name = child:data().name
+                if package then
+                    table.insert(test_suites, package .. test_suite_name)
+                else
+                    table.insert(test_suites, "*" .. test_suite_name)
+                end
             end
         end
-        if test_suites then
-            local package = utils.get_package_name(tree:data().path)
-            return package .. "*"
+        if test_suites and #test_suites > 0 then
+            return table.concat(test_suites, " ")
         end
     end
     if type == "dir" then
